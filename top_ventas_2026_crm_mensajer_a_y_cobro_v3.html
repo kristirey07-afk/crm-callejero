@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Top Ventas 2026 - CRM Cristina</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#8C7AE6',
+                            purpleDark: '#6C5CE7',
+                            mint: '#00B894',
+                            mintDark: '#009475',
+                            mintLight: '#55E6C1',
+                            pink: '#FD79A8',
+                            bg: '#F8F9FA',
+                            card: '#FFFFFF',
+                            text: '#2D3436'
+                        },
+                        pastel: {
+                            purple: '#EBE7FF',
+                            mint: '#E6FAF5',
+                            pink: '#FFEAA7',
+                            rose: '#FFE0E6',
+                            blue: '#E0F2FE',
+                            yellow: '#FEF9C3'
+                        }
+                    },
+                    borderRadius: {
+                        '3xl': '24px',
+                        '2xl': '18px',
+                        'xl': '14px'
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Text', 'Nunito', 'Segoe UI', 'Roboto', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts Nunito -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Nunito", sans-serif;
+            background-color: #F8F9FA;
+            color: #2D3436;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: -0.011em;
+        }
+
+        .pastel-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(140, 122, 230, 0.12);
+            box-shadow: 0 4px 20px -2px rgba(140, 122, 230, 0.05);
+            transition: all 0.25s ease;
+        }
+
+        .pastel-card:hover {
+            transform: translateY(-1.5px);
+            border-color: rgba(140, 122, 230, 0.25);
+            box-shadow: 0 10px 24px -4px rgba(140, 122, 230, 0.1);
+        }
+
+        /* Drag & Drop Visual Styles */
+        .drag-over {
+            background-color: #EBE7FF !important;
+            border-style: dashed !important;
+            border-color: #8C7AE6 !important;
+        }
+
+        .dragging {
+            opacity: 0.4;
+            transform: scale(0.98);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F3F9;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8C7AE6;
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Estilo sutil de badges minimalistas */
+        .pill-tag {
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 99px;
+            letter-spacing: 0.02em;
+        }
+    </style>
+</head>
+<body class="h-full flex flex-col antialiased selection:bg-brand-mintLight selection:text-brand-text">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-white/80 backdrop-blur-xl sticky top-0 z-30 border-b border-slate-100 px-4 py-3 sm:px-6">
+        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            
+            <!-- Branding -->
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-purple to-brand-mint text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                    TV
+                </div>
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h1 class="text-base font-bold text-slate-800 leading-none tracking-tight">Top Ventas 2026</h1>
+                        <span class="pill-tag bg-pastel-mint text-brand-mintDark border border-brand-mint/20">Cádiz</span>
+                    </div>
+                    <p class="text-[11px] font-medium text-slate-400 mt-0.5">Reparto & Cobranza · <span class="text-brand-purple font-semibold">Cristina</span></p>
+                </div>
+            </div>
+
+            <!-- Quick Gamification & Add Lead Button -->
+            <div class="flex items-center gap-3">
+                <div class="bg-slate-50 border border-slate-200/60 px-3 py-1.5 rounded-xl flex items-center gap-2">
+                    <span class="text-[10px] font-extrabold text-brand-purple uppercase tracking-wider">Nivel 7</span>
+                    <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+                    <div id="header-xp" class="text-xs font-bold text-slate-700">1.450 / 2.000 XP</div>
+                </div>
+
+                <button onclick="openAddLeadModal()" class="hidden sm:flex px-3.5 py-1.5 bg-brand-purple hover:bg-brand-purpleDark text-white font-bold text-xs rounded-xl shadow-sm transition items-center gap-1.5">
+                    <span>+ Nuevo Lead</span>
+                </button>
+
+                <button onclick="switchTab('screen-logros')" class="px-3 py-1.5 rounded-xl bg-slate-100 hover:bg-pastel-purple text-slate-600 hover:text-brand-purple font-bold text-xs transition">
+                    Logros
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs (Desktop & Tablet) -->
+        <nav class="max-w-7xl mx-auto mt-3 flex items-center gap-1.5 overflow-x-auto no-scrollbar pt-1 border-t border-slate-100/60">
+            <button onclick="switchTab('screen-kanban')" id="nav-screen-kanban" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-brand-purple text-white shadow-sm">
+                Tablero (6 Etapas)
+            </button>
+            <button onclick="switchTab('screen-cliente')" id="nav-screen-cliente" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition text-slate-500 hover:text-slate-800 hover:bg-slate-100">
+                Ficha de Cliente
+            </button>
+            <button onclick="switchTab('screen-panel')" id="nav-screen-panel" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition text-slate-500 hover:text-slate-800 hover:bg-slate-100">
+                Panel & Métricas
+            </button>
+            <button onclick="switchTab('screen-logros')" id="nav-screen-logros" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition text-slate-500 hover:text-slate-800 hover:bg-slate-100">
+                Logros & Retos
+            </button>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 mb-16 sm:mb-0">
+
+        <!-- ========================================== -->
+        <!-- PANTALLA 1: TABLERO KANBAN (6 COLUMNAS) -->
+        <!-- ========================================== -->
+        <section id="screen-kanban" class="tab-screen space-y-4">
+            
+            <!-- Banner Motivacional & Barra de Filtros -->
+            <div class="pastel-card rounded-2xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 bg-gradient-to-r from-white via-slate-50 to-pastel-purple/20">
+                <div>
+                    <h2 class="text-sm font-bold text-slate-800">Tablero Operativo de Recibos y Rutas</h2>
+                    <p class="text-xs font-medium text-slate-500">Arrastra las tarjetas entre etapas o cambia su estado. Guardado automático.</p>
+                </div>
+
+                <div class="flex items-center gap-2 w-full sm:w-auto">
+                    <input type="text" id="kanban-search" oninput="renderKanban()" placeholder="Buscar cliente o servicio..." class="w-full sm:w-56 bg-white border border-slate-200 text-xs rounded-xl px-3 py-1.5 text-slate-700 focus:outline-none focus:border-brand-purple">
+                    <button onclick="openAddLeadModal()" class="sm:hidden px-3 py-1.5 bg-brand-purple text-white font-bold text-xs rounded-xl whitespace-nowrap">
+                        + Nuevo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Grid de 6 Columnas Kanban -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3 items-start">
+                
+                <!-- Columna 1: Nuevo -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="nuevo">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Nuevo</h3>
+                            </div>
+                            <span id="badge-count-nuevo" class="pill-tag bg-white text-slate-600 border border-slate-200">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-brand-purple flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-nuevo">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-nuevo" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'nuevo')"></div>
+                </div>
+
+                <!-- Columna 2: Contactado -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="contactado">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Contactado</h3>
+                            </div>
+                            <span id="badge-count-contactado" class="pill-tag bg-white text-slate-600 border border-slate-200">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-brand-purple flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-contactado">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-contactado" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'contactado')"></div>
+                </div>
+
+                <!-- Columna 3: Reunión -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="reunion">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Reunión</h3>
+                            </div>
+                            <span id="badge-count-reunion" class="pill-tag bg-white text-slate-600 border border-slate-200">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-brand-purple flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-reunion">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-reunion" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'reunion')"></div>
+                </div>
+
+                <!-- Columna 4: Propuesta -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="propuesta">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Propuesta</h3>
+                            </div>
+                            <span id="badge-count-propuesta" class="pill-tag bg-white text-slate-600 border border-slate-200">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-brand-purple flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-propuesta">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-propuesta" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'propuesta')"></div>
+                </div>
+
+                <!-- Columna 5: Ganado -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="ganado">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Ganado</h3>
+                            </div>
+                            <span id="badge-count-ganado" class="pill-tag bg-pastel-mint text-brand-mintDark border border-brand-mint/20">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-brand-mintDark flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-ganado">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-ganado" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'ganado')"></div>
+                </div>
+
+                <!-- Columna 6: Perdido -->
+                <div class="kanban-col-wrapper bg-slate-50 border border-slate-200/70 rounded-2xl p-2.5 space-y-2.5" data-stage="perdido">
+                    <div class="flex flex-col gap-1 px-1 border-b border-slate-200/50 pb-2">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2 h-2 rounded-full bg-rose-400"></span>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-600">Perdido</h3>
+                            </div>
+                            <span id="badge-count-perdido" class="pill-tag bg-white text-slate-600 border border-slate-200">0</span>
+                        </div>
+                        <div class="text-[11px] font-bold text-rose-600 flex items-center justify-between">
+                            <span class="text-slate-400 font-normal">Total</span>
+                            <span id="sum-perdido">0,00 €</span>
+                        </div>
+                    </div>
+                    <div id="col-perdido" class="kanban-drop-zone space-y-2.5 min-h-[360px] transition-all rounded-xl p-0.5" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event, 'perdido')"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PANTALLA 2: FICHA DE CLIENTE DETALLADA -->
+        <!-- ========================================== -->
+        <section id="screen-cliente" class="tab-screen hidden space-y-5">
+            
+            <!-- Header Cliente Selector -->
+            <div class="pastel-card rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <h2 id="client-name" class="text-lg font-bold text-slate-800">Gestoría Puerta Tierra</h2>
+                        <span class="pill-tag bg-pastel-mint text-brand-mintDark border border-brand-mint/20">Cliente Preferente</span>
+                    </div>
+                    <p id="client-address" class="text-xs font-medium text-slate-500 mt-1">
+                        Av. Ana de Viya 42, Portal 2, 1ºB · Cádiz
+                    </p>
+                </div>
+
+                <div class="flex items-center gap-2 w-full md:w-auto justify-end">
+                    <a href="tel:956001122" class="px-3.5 py-2 rounded-xl bg-pastel-mint text-brand-mintDark font-bold text-xs hover:bg-brand-mint hover:text-white transition">
+                        Llamar (956 22 11 00)
+                    </a>
+                    <button onclick="showToast('Notificación de entrega / cobro lista para enviar')" class="px-3.5 py-2 rounded-xl bg-pastel-purple text-brand-purple font-bold text-xs hover:bg-brand-purple hover:text-white transition">
+                        Enviar Notificación
+                    </button>
+                </div>
+            </div>
+
+            <!-- Contenido Ficha: Datos y Barras de Criterios + Mapa de Empatía -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                
+                <!-- Columna Izquierda: Métricas del Cliente & Notas -->
+                <div class="space-y-5">
+                    
+                    <!-- Barras de Criterios -->
+                    <div class="pastel-card rounded-2xl p-5 space-y-4">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100 pb-2">
+                            Criterios de Afinidad y Cobro
+                        </h3>
+
+                        <div class="space-y-3">
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-600">Encaje Comercial</span>
+                                    <span class="text-brand-purple">98%</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-brand-purple rounded-full w-[98%]"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-600">Puntualidad de Pago</span>
+                                    <span class="text-brand-mint">95%</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-brand-mint rounded-full w-[95%]"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-xs font-bold mb-1">
+                                    <span class="text-slate-600">Volumen Semanal</span>
+                                    <span class="text-blue-600">82%</span>
+                                </div>
+                                <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-blue-500 rounded-full w-[82%]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Histórico y Observaciones de Cobranza -->
+                    <div class="pastel-card rounded-2xl p-5 space-y-3">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100 pb-2">
+                            Notas de Ruta y Cobro
+                        </h3>
+
+                        <div id="notes-list" class="space-y-2">
+                            <div class="bg-slate-50 border border-slate-200/60 p-3 rounded-xl text-xs space-y-1">
+                                <div class="flex justify-between font-bold text-slate-700">
+                                    <span>Preferencias de Entrega</span>
+                                    <span class="text-slate-400 font-normal">Viernes mañana</span>
+                                </div>
+                                <p class="text-slate-600 font-medium">Recibir siempre en recepción antes de las 13:30h. Atiende Manuel.</p>
+                            </div>
+
+                            <div class="bg-slate-50 border border-slate-200/60 p-3 rounded-xl text-xs space-y-1">
+                                <div class="flex justify-between font-bold text-slate-700">
+                                    <span>Último Cobro Registrado</span>
+                                    <span class="text-slate-400 font-normal">Hace 4 días</span>
+                                </div>
+                                <p class="text-slate-600 font-medium">Cobro de 420,00 € efectuado por cheque conformado.</p>
+                            </div>
+                        </div>
+
+                        <!-- Nueva Nota Input -->
+                        <div class="pt-2 flex gap-2">
+                            <input type="text" id="new-note-input" placeholder="Añadir nota de cliente..." class="flex-1 bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs text-slate-700 focus:outline-none focus:border-brand-purple">
+                            <button onclick="addClientNote()" class="px-3.5 py-2 bg-brand-purple text-white text-xs font-bold rounded-xl hover:bg-brand-purpleDark transition">
+                                Añadir
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Mapa de Empatía en 4 Cajas -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                            Mapa de Empatía del Cliente
+                        </h3>
+                        <span class="pill-tag bg-slate-100 text-slate-600 border border-slate-200">
+                            Perfil: Mensajería & Servicios
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        
+                        <!-- Caja 1: ¿Qué piensa y siente? -->
+                        <div class="pastel-card rounded-2xl p-4 bg-pastel-purple/20 border-purple-200/60 space-y-2">
+                            <h4 class="text-xs font-bold text-brand-purpleDark uppercase tracking-wider">1. ¿Qué piensa y siente?</h4>
+                            <ul class="text-xs font-medium text-slate-600 space-y-1.5">
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-purple mt-1.5 shrink-0"></span>
+                                    <span>Valora enormemente la puntualidad y el trato directo y personal en Cádiz.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-purple mt-1.5 shrink-0"></span>
+                                    <span>Busca tranquilidad absoluta en la custodia del efectivo y documentación legal.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Caja 2: ¿Qué ve? -->
+                        <div class="pastel-card rounded-2xl p-4 bg-pastel-blue/20 border-blue-200/60 space-y-2">
+                            <h4 class="text-xs font-bold text-blue-900 uppercase tracking-wider">2. ¿Qué ve?</h4>
+                            <ul class="text-xs font-medium text-slate-600 space-y-1.5">
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+                                    <span>Empresas grandes de mensajería sin atención directa ni respuesta rápida.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+                                    <span>Elevado volumen de gestiones diarias entre el Casco Antiguo y Puerta Tierra.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Caja 3: ¿Qué dice y hace? -->
+                        <div class="pastel-card rounded-2xl p-4 bg-pastel-mint/20 border-emerald-200/60 space-y-2">
+                            <h4 class="text-xs font-bold text-emerald-900 uppercase tracking-wider">3. ¿Qué dice y hace?</h4>
+                            <ul class="text-xs font-medium text-slate-600 space-y-1.5">
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-mint mt-1.5 shrink-0"></span>
+                                    <span>Prepara las listas de recibos y remesas con antelación para agilizar las recogidas.</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-brand-mint mt-1.5 shrink-0"></span>
+                                    <span>Recomienda el servicio de Cristina a otros despachos y establecimientos vecinos.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Caja 4: ¿Qué oye? -->
+                        <div class="pastel-card rounded-2xl p-4 bg-pastel-pink/20 border-amber-200/60 space-y-2">
+                            <h4 class="text-xs font-bold text-amber-900 uppercase tracking-wider">4. ¿Qué oye?</h4>
+                            <ul class="text-xs font-medium text-slate-600 space-y-1.5">
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600 mt-1.5 shrink-0"></span>
+                                    <span>"El servicio de cobro presencial reduce a cero los impagos de clientes habituales".</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-600 mt-1.5 shrink-0"></span>
+                                    <span>Excelentes referencias sobre la rapidez de respuesta durante la jornada.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PANTALLA 3: PANEL DE CONTROL Y MÉTRICAS -->
+        <!-- ========================================== -->
+        <section id="screen-panel" class="tab-screen hidden space-y-5">
+            
+            <!-- Resumen Tarjetas Métricas Dinámicas -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <div class="pastel-card rounded-2xl p-5 space-y-1.5 bg-gradient-to-br from-white to-pastel-purple/15">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Total Ganados / Cobrados</span>
+                    <div id="dash-total-ganado" class="text-2xl font-bold text-slate-800">0,00 €</div>
+                    <span class="text-[11px] font-semibold text-brand-mint">Tasa de liquidación activa</span>
+                </div>
+
+                <div class="pastel-card rounded-2xl p-5 space-y-1.5 bg-gradient-to-br from-white to-pastel-mint/15">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">En Pipeline Activo</span>
+                    <div id="dash-total-pipeline" class="text-2xl font-bold text-slate-800">0,00 €</div>
+                    <span id="dash-pipeline-count" class="text-[11px] font-semibold text-slate-500">0 leads activos</span>
+                </div>
+
+                <div class="pastel-card rounded-2xl p-5 space-y-1.5 bg-gradient-to-br from-white to-pastel-blue/15">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Promedio Encaje (%)</span>
+                    <div id="dash-avg-fit" class="text-2xl font-bold text-slate-800">0%</div>
+                    <span class="text-[11px] font-semibold text-blue-600">Afinidad global de ruta</span>
+                </div>
+
+                <div class="pastel-card rounded-2xl p-5 space-y-1.5 bg-gradient-to-br from-white to-pastel-pink/15">
+                    <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Eficiencia de Ruta</span>
+                    <div class="text-2xl font-bold text-slate-800">96,8%</div>
+                    <span class="text-[11px] font-semibold text-amber-700">Zona Cádiz Centro</span>
+                </div>
+
+            </div>
+
+            <!-- Barra Objetivo del Mes -->
+            <div class="pastel-card rounded-2xl p-5 bg-white border-purple-200/60">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-purple">Meta Mensual de Recaudación</span>
+                        <h3 class="text-base font-bold text-slate-800">Objetivo del Mes: 5.000 €</h3>
+                    </div>
+                    <span id="target-badge" class="pill-tag bg-pastel-mint text-brand-mintDark border border-brand-mint/20">
+                        0% Completado
+                    </span>
+                </div>
+
+                <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden border border-slate-200/60">
+                    <div id="target-progress-bar" class="h-full bg-gradient-to-r from-brand-purple to-brand-mint rounded-full transition-all duration-700 w-[0%]"></div>
+                </div>
+
+                <p id="target-subtext" class="text-xs font-medium text-slate-500 mt-2 text-right">
+                    Calculando progreso...
+                </p>
+            </div>
+
+            <!-- Gráficas: Embudo Visual + Canvas Valor vs % Encaje -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                
+                <!-- Gráfica Canvas: Valor (€) vs. Encaje (%) -->
+                <div class="pastel-card rounded-2xl p-5 space-y-3">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+                        <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                            Matriz Valor (€) vs Encaje (%)
+                        </h3>
+                        <span class="text-[11px] font-medium text-slate-400">Leads Actuales</span>
+                    </div>
+
+                    <div class="w-full h-64 relative flex items-center justify-center bg-slate-50/50 rounded-xl border border-slate-100 p-2">
+                        <canvas id="scatterCanvas" class="w-full h-full"></canvas>
+                    </div>
+
+                    <div class="flex items-center justify-center gap-5 text-xs font-medium text-slate-500">
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brand-purple"></span> Alta Afinidad (>80%)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-brand-mint"></span> Ganados / Cobrados</span>
+                    </div>
+                </div>
+
+                <!-- Embudo de Conversión de Recibos y Mensajería -->
+                <div class="pastel-card rounded-2xl p-5 space-y-4">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 border-b border-slate-100 pb-2">
+                        Embudo de Leads por Etapas
+                    </h3>
+
+                    <div id="funnel-container" class="space-y-2.5 pt-1">
+                        <!-- Generado por JS -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- PANTALLA 4: LOGROS, RETOS Y GAMIFICACIÓN -->
+        <!-- ========================================== -->
+        <section id="screen-logros" class="tab-screen hidden space-y-5">
+            
+            <!-- Panel Nivel & Barra XP Principal -->
+            <div class="pastel-card rounded-2xl p-6 bg-gradient-to-r from-white via-slate-50 to-pastel-purple/20 border-purple-200/60">
+                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-purple">Nivel Actual</span>
+                        <h2 class="text-lg font-bold text-slate-800">Nivel 7 · Gestión Superior de Ruta</h2>
+                        <p class="text-xs font-medium text-slate-500">Continúa gestionando recibos y repartos para alcanzar el Nivel 8.</p>
+                    </div>
+
+                    <div class="text-left sm:text-right">
+                        <div class="text-xl font-bold text-brand-purple" id="total-xp-display">1.450 XP</div>
+                        <span class="text-xs font-semibold text-brand-mint">+220 XP esta semana</span>
+                    </div>
+                </div>
+
+                <!-- Barra Progreso Nivel -->
+                <div class="mt-4 space-y-1.5">
+                    <div class="flex justify-between text-xs font-semibold text-slate-600">
+                        <span>Progreso hacia Nivel 8</span>
+                        <span id="xp-percentage-label">72,5%</span>
+                    </div>
+                    <div class="w-full h-2.5 bg-slate-100 rounded-full border border-slate-200/60 overflow-hidden">
+                        <div id="xp-progress-bar" class="h-full bg-gradient-to-r from-brand-purple to-brand-mint rounded-full w-[72.5%] transition-all duration-500"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Insignias Gamificadas (Minimalistas) -->
+            <div class="space-y-3">
+                <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
+                    <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500">
+                        Insignias de Desempeño
+                    </h3>
+                    <span class="text-xs font-medium text-slate-400">6 Desbloqueadas</span>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+                    
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-800">Eficiencia en Cádiz</h4>
+                                <span class="pill-tag bg-amber-50 text-amber-800 border border-amber-200">ORO</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-500 mt-1">50 entregas en tiempo estimado en el centro.</p>
+                        </div>
+                    </div>
+
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-800">Gestión de Cobro</h4>
+                                <span class="pill-tag bg-amber-50 text-amber-800 border border-amber-200">ORO</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-500 mt-1">Más de 2.000,00 € liquidados en una semana.</p>
+                        </div>
+                    </div>
+
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-800">Negociación Comercial</h4>
+                                <span class="pill-tag bg-slate-100 text-slate-700 border border-slate-200">PLATA</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-500 mt-1">5 visitas finalizadas con propuesta aceptada.</p>
+                        </div>
+                    </div>
+
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-800">Ruta Maestra</h4>
+                                <span class="pill-tag bg-slate-100 text-slate-700 border border-slate-200">PLATA</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-500 mt-1">Planificación optimizada por zonas de entrega.</p>
+                        </div>
+                    </div>
+
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-white">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-800">Primer Lead</h4>
+                                <span class="pill-tag bg-amber-100/50 text-amber-900 border border-amber-200">BRONCE</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-500 mt-1">Registro inicial de un nuevo cliente en sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="pastel-card rounded-2xl p-4 flex items-center justify-between bg-slate-50 opacity-60">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h4 class="text-xs font-bold text-slate-600">Perfección Semanal</h4>
+                                <span class="pill-tag bg-slate-200 text-slate-600">BLOQUEADA</span>
+                            </div>
+                            <p class="text-[11px] font-medium text-slate-400 mt-1">Completa 10 servicios en estado Ganado.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Reto Semanal y Reto Mensual -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                
+                <!-- Reto Semanal -->
+                <div class="pastel-card rounded-2xl p-5 space-y-3 bg-white">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-purple">Desafío Semanal</span>
+                        <span class="pill-tag bg-pastel-purple text-brand-purple">
+                            +250 XP Recompensa
+                        </span>
+                    </div>
+
+                    <h4 class="text-sm font-bold text-slate-800">Mover 5 leads a la etapa Ganado</h4>
+                    <p class="text-xs text-slate-500 font-medium">Gestiona y liquida tus entregas y recibos previstos.</p>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-bold text-slate-700">
+                            <span>Progreso del reto</span>
+                            <span id="challenge-weekly-text" class="text-brand-purple">0 / 5</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-100 rounded-full border border-slate-200/60 overflow-hidden">
+                            <div id="challenge-weekly-bar" class="h-full bg-brand-purple rounded-full w-[0%] transition-all duration-500"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reto Mensual Especial -->
+                <div class="pastel-card rounded-2xl p-5 space-y-3 bg-white border-brand-mint/30">
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-mintDark">Reto Mensual Especial</span>
+                        <span class="pill-tag bg-pastel-mint text-brand-mintDark">
+                            Recompensa Especial
+                        </span>
+                    </div>
+
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <h4 class="text-sm font-bold text-slate-800">Alcanzar 3.000 € acumulados</h4>
+                            <p class="text-xs text-slate-500 font-medium mt-0.5">Haz clic para reclamar el bono cuando alcances el objetivo.</p>
+                        </div>
+                        <button onclick="unlockChest()" id="chest-btn" class="px-3 py-1.5 rounded-xl bg-pastel-mint text-brand-mintDark hover:bg-brand-mint hover:text-white font-bold text-xs transition whitespace-nowrap">
+                            Reclamar
+                        </button>
+                    </div>
+
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-bold text-slate-700">
+                            <span>Estado del Objetivo</span>
+                            <span id="chest-status-text" class="text-brand-mint">Disponible</span>
+                        </div>
+                        <div class="w-full h-2.5 bg-slate-100 rounded-full border border-slate-200/60 overflow-hidden">
+                            <div class="h-full bg-brand-mint rounded-full w-[100%]"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (Mobile Native Style) -->
+    <div class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/90 backdrop-blur-lg border-t border-slate-200 px-4 py-2 flex items-center justify-around">
+        <button onclick="switchTab('screen-kanban')" id="mob-screen-kanban" class="mob-tab flex flex-col items-center gap-0.5 text-brand-purple font-bold">
+            <span class="text-xs">Tablero</span>
+        </button>
+        <button onclick="switchTab('screen-cliente')" id="mob-screen-cliente" class="mob-tab flex flex-col items-center gap-0.5 text-slate-400 font-bold">
+            <span class="text-xs">Cliente</span>
+        </button>
+        <button onclick="switchTab('screen-panel')" id="mob-screen-panel" class="mob-tab flex flex-col items-center gap-0.5 text-slate-400 font-bold">
+            <span class="text-xs">Panel</span>
+        </button>
+        <button onclick="switchTab('screen-logros')" id="mob-screen-logros" class="mob-tab flex flex-col items-center gap-0.5 text-slate-400 font-bold">
+            <span class="text-xs">Logros</span>
+        </button>
+    </div>
+
+    <!-- Modal Formulario Nuevo Lead -->
+    <div id="modal-lead" class="fixed inset-0 z-50 bg-slate-900/30 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-2xl p-5 border border-slate-200 space-y-4 shadow-xl max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-2.5">
+                <h3 class="text-sm font-bold text-slate-800">Añadir Nuevo Lead / Recibo</h3>
+                <button onclick="closeAddLeadModal()" class="text-slate-400 hover:text-slate-600 text-xs font-bold px-2 py-1">
+                    Cerrar
+                </button>
+            </div>
+
+            <form id="form-new-lead" onsubmit="saveNewLead(event)" class="space-y-3 text-xs">
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Nombre del Cliente / Empresa *</label>
+                    <input type="text" id="lead-name" required placeholder="Ej: Farmacia San José" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Contacto / Dirección *</label>
+                    <input type="text" id="lead-contact" required placeholder="Ej: Juan Pérez - Av. Ana de Viya 15" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Valor Estimado (€) *</label>
+                        <input type="number" id="lead-value" required min="0" step="5" placeholder="150" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Encaje / Afinidad (%) *</label>
+                        <input type="number" id="lead-fit" required min="0" max="100" placeholder="90" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Tipo de Servicio *</label>
+                        <select id="lead-type" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                            <option value="cobro">Cobranza de recibo</option>
+                            <option value="mensajeria">Mensajería y reparto</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Etapa Inicial</label>
+                        <select id="lead-stage" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                            <option value="nuevo">Nuevo</option>
+                            <option value="contactado">Contactado</option>
+                            <option value="reunion">Reunión</option>
+                            <option value="propuesta">Propuesta</option>
+                            <option value="ganado">Ganado</option>
+                            <option value="perdido">Perdido</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Próxima Acción</label>
+                        <input type="text" id="lead-action" placeholder="Ej: Visita cobro 10:30h" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                    </div>
+                    <div>
+                        <label class="font-bold text-slate-700 block mb-1">Fecha</label>
+                        <input type="date" id="lead-date" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="font-bold text-slate-700 block mb-1">Notas Adicionales</label>
+                    <textarea id="lead-notes" rows="2" placeholder="Detalles de cobranza o entrega..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 font-semibold text-slate-800 focus:outline-none focus:border-brand-purple"></textarea>
+                </div>
+
+                <div class="flex gap-2 pt-2">
+                    <button type="button" onclick="closeAddLeadModal()" class="flex-1 py-2 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs hover:bg-slate-200 transition">Cancelar</button>
+                    <button type="submit" class="flex-1 py-2 rounded-xl bg-brand-purple hover:bg-brand-purpleDark text-white font-bold text-xs transition">Guardar Lead</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Minimalista -->
+    <div id="toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform -translate-y-2">
+        <div class="px-4 py-2 rounded-xl bg-slate-800 text-white text-xs font-semibold shadow-lg flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-mint"></span>
+            <span id="toast-msg">Notificación</span>
+        </div>
+    </div>
+
+    <!-- JavaScript CRM Engine -->
+    <script>
+        // ==========================================
+        // LOCALSTORAGE PERSISTENCY & INITIAL DATA
+        // ==========================================
+        const STORAGE_KEY = 'top_ventas_crm_leads_v2';
+        const XP_KEY = 'top_ventas_crm_xp_v2';
+
+        const INITIAL_LEADS = [
+            {
+                id: 'lead-1',
+                name: 'Farmacia Central',
+                contact: 'Marta Ríos - Av. Cayetano del Toro 12',
+                val: 150,
+                fit: 95,
+                type: 'cobro',
+                action: 'Cobrar recibo mensual a las 10:30h',
+                date: '2026-11-06',
+                notes: 'Llevar recibo impreso.',
+                stage: 'nuevo'
+            },
+            {
+                id: 'lead-2',
+                name: 'Calzados Cádiz',
+                contact: 'Manuel Gómez - C/ García Carrera 43',
+                val: 280,
+                fit: 88,
+                type: 'mensajeria',
+                action: 'Entregar paquete repuestos',
+                date: '2026-11-06',
+                notes: 'Entregar en horario comercial.',
+                stage: 'contactado'
+            },
+            {
+                id: 'lead-3',
+                name: 'Panadería San José',
+                contact: 'Antonio López - Plaza de Madrid 4',
+                val: 120,
+                fit: 92,
+                type: 'cobro',
+                action: 'Cobro talón semanal',
+                date: '2026-11-07',
+                notes: 'Recepción secundaria.',
+                stage: 'reunion'
+            },
+            {
+                id: 'lead-4',
+                name: 'Gestoría Puerta Tierra',
+                contact: 'Sr. Antonio - Av. Ana de Viya 42',
+                val: 420,
+                fit: 98,
+                type: 'cobro',
+                action: 'Firma de remesa + Cobro',
+                date: '2026-11-06',
+                notes: 'Cliente VIP preferente.',
+                stage: 'propuesta'
+            },
+            {
+                id: 'lead-5',
+                name: 'Clínica Dental Bahía',
+                contact: 'Dra. Carmen - Av. de la Bahía 25',
+                val: 650,
+                fit: 96,
+                type: 'cobro',
+                action: 'Recibo saldado con éxito',
+                date: '2026-11-05',
+                notes: 'Transferencia verificada.',
+                stage: 'ganado'
+            },
+            {
+                id: 'lead-6',
+                name: 'Cafetería La Barrosa',
+                contact: 'Jesús - Plaza de la Barrosa 80',
+                val: 190,
+                fit: 70,
+                type: 'mensajeria',
+                action: 'Aplazado por ausente',
+                date: '2026-11-04',
+                notes: 'Reintentar próxima semana.',
+                stage: 'perdido'
+            }
+        ];
+
+        let leads = [];
+        let currentXP = 1450;
+        let draggedLeadId = null;
+
+        function loadState() {
+            const savedLeads = localStorage.getItem(STORAGE_KEY);
+            if (savedLeads) {
+                try {
+                    leads = JSON.parse(savedLeads);
+                } catch(e) {
+                    leads = [...INITIAL_LEADS];
+                }
+            } else {
+                leads = [...INITIAL_LEADS];
+                saveState();
+            }
+
+            const savedXP = localStorage.getItem(XP_KEY);
+            if (savedXP) {
+                currentXP = parseInt(savedXP, 10) || 1450;
+            }
+            updateXPUI();
+        }
+
+        function saveState() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+            localStorage.setItem(XP_KEY, currentXP.toString());
+        }
+
+        // ==========================================
+        // RENDER KANBAN BOARD
+        // ==========================================
+        const STAGES = ['nuevo', 'contactado', 'reunion', 'propuesta', 'ganado', 'perdido'];
+
+        function renderKanban() {
+            const query = (document.getElementById('kanban-search')?.value || '').toLowerCase();
+
+            STAGES.forEach(stage => {
+                const col = document.getElementById(`col-${stage}`);
+                if (col) col.innerHTML = '';
+            });
+
+            const sums = { nuevo: 0, contactado: 0, reunion: 0, propuesta: 0, ganado: 0, perdido: 0 };
+            const counts = { nuevo: 0, contactado: 0, reunion: 0, propuesta: 0, ganado: 0, perdido: 0 };
+
+            leads.forEach(lead => {
+                const matchName = lead.name.toLowerCase().includes(query);
+                const matchContact = lead.contact.toLowerCase().includes(query);
+                const matchAction = (lead.action || '').toLowerCase().includes(query);
+                if (query && !matchName && !matchContact && !matchAction) return;
+
+                sums[lead.stage] += (Number(lead.val) || 0);
+                counts[lead.stage] += 1;
+
+                const cardHtml = createCardHTML(lead);
+                const col = document.getElementById(`col-${lead.stage}`);
+                if (col) {
+                    col.innerHTML += cardHtml;
+                }
+            });
+
+            STAGES.forEach(stage => {
+                const countBadge = document.getElementById(`badge-count-${stage}`);
+                const sumSpan = document.getElementById(`sum-${stage}`);
+
+                if (countBadge) countBadge.innerText = counts[stage];
+                if (sumSpan) sumSpan.innerText = `${sums[stage].toLocaleString('es-ES', { minimumFractionDigits: 2 })} €`;
+            });
+
+            updateDashboardMetrics(sums, counts);
+        }
+
+        function createCardHTML(lead) {
+            const isCobro = lead.type === 'cobro';
+            const typeLabel = isCobro ? 'Cobranza' : 'Reparto';
+            const badgeFitColor = lead.fit >= 90 ? 'bg-pastel-mint text-brand-mintDark border-brand-mint/20' : 'bg-pastel-blue text-blue-700 border-blue-200';
+
+            return `
+                <div id="${lead.id}" 
+                     draggable="true" 
+                     ondragstart="handleDragStart(event, '${lead.id}')"
+                     ondragend="handleDragEnd(event)"
+                     onclick="selectClient('${lead.name.replace(/'/g, "\'")}')"
+                     class="pastel-card rounded-xl p-3 space-y-2 cursor-grab active:cursor-grabbing relative">
+                    
+                    <div class="flex items-start justify-between gap-1.5">
+                        <div class="pr-1">
+                            <h4 class="text-xs font-bold text-slate-800 leading-snug">${lead.name}</h4>
+                            <p class="text-[10px] font-medium text-slate-400 truncate mt-0.5">${lead.contact}</p>
+                        </div>
+                        <span class="pill-tag ${badgeFitColor} border shrink-0">
+                            ${lead.fit}%
+                        </span>
+                    </div>
+
+                    <div class="bg-slate-50 p-2 rounded-lg border border-slate-100 text-[11px] space-y-0.5">
+                        <div class="flex items-center justify-between text-slate-400 text-[10px] font-semibold uppercase">
+                            <span>${typeLabel}</span>
+                            <span>${lead.date || ''}</span>
+                        </div>
+                        <div class="font-semibold text-slate-700 truncate">
+                            ${lead.action || 'Pendiente'}
+                        </div>
+                    </div>
+
+                    <div class="flex items-center justify-between pt-1 border-t border-slate-100">
+                        <span class="text-xs font-bold text-brand-purple">${Number(lead.val).toLocaleString('es-ES', { minimumFractionDigits: 2 })} €</span>
+                        
+                        <div onclick="event.stopPropagation();" class="flex items-center gap-1">
+                            <select onchange="moveLeadToStage('${lead.id}', this.value)" class="text-[10px] font-semibold bg-slate-100 border border-slate-200 rounded-md px-1.5 py-0.5 text-slate-600 focus:outline-none cursor-pointer">
+                                <option value="" disabled selected>Mover...</option>
+                                <option value="nuevo" ${lead.stage === 'nuevo' ? 'disabled' : ''}>Nuevo</option>
+                                <option value="contactado" ${lead.stage === 'contactado' ? 'disabled' : ''}>Contactado</option>
+                                <option value="reunion" ${lead.stage === 'reunion' ? 'disabled' : ''}>Reunión</option>
+                                <option value="propuesta" ${lead.stage === 'propuesta' ? 'disabled' : ''}>Propuesta</option>
+                                <option value="ganado" ${lead.stage === 'ganado' ? 'disabled' : ''}>Ganado</option>
+                                <option value="perdido" ${lead.stage === 'perdido' ? 'disabled' : ''}>Perdido</option>
+                            </select>
+                            <button onclick="event.stopPropagation(); deleteLead('${lead.id}')" title="Eliminar lead" class="text-slate-300 hover:text-rose-500 px-1 transition text-[11px]">
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ==========================================
+        // HTML5 DRAG & DROP HANDLERS
+        // ==========================================
+        function handleDragStart(e, id) {
+            draggedLeadId = id;
+            e.dataTransfer.setData('text/plain', id);
+            e.target.classList.add('dragging');
+        }
+
+        function handleDragEnd(e) {
+            e.target.classList.remove('dragging');
+            document.querySelectorAll('.kanban-drop-zone').forEach(el => el.classList.remove('drag-over'));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e, targetStage) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+
+            const id = e.dataTransfer.getData('text/plain') || draggedLeadId;
+            if (id) {
+                moveLeadToStage(id, targetStage);
+            }
+        }
+
+        function moveLeadToStage(id, targetStage) {
+            const lead = leads.find(l => l.id === id);
+            if (!lead || lead.stage === targetStage) return;
+
+            lead.stage = targetStage;
+            saveState();
+            renderKanban();
+
+            if (targetStage === 'ganado') {
+                showToast(`Trato cerrado: ${lead.name} (+100 XP)`);
+                addXP(100);
+            } else {
+                showToast(`Lead movido a ${targetStage.toUpperCase()} (+20 XP)`);
+                addXP(20);
+            }
+        }
+
+        function deleteLead(id) {
+            if (confirm('¿Eliminar este lead de la lista?')) {
+                leads = leads.filter(l => l.id !== id);
+                saveState();
+                renderKanban();
+                showToast('Lead eliminado');
+            }
+        }
+
+        // ==========================================
+        // FORMULARIO NUEVO LEAD
+        // ==========================================
+        function openAddLeadModal() {
+            document.getElementById('modal-lead').classList.remove('hidden');
+            const dateInput = document.getElementById('lead-date');
+            if (dateInput && !dateInput.value) {
+                dateInput.value = new Date().toISOString().split('T')[0];
+            }
+        }
+
+        function closeAddLeadModal() {
+            document.getElementById('modal-lead').classList.add('hidden');
+        }
+
+        function saveNewLead(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('lead-name').value.trim();
+            const contact = document.getElementById('lead-contact').value.trim();
+            const val = parseFloat(document.getElementById('lead-value').value) || 0;
+            const fit = parseInt(document.getElementById('lead-fit').value, 10) || 80;
+            const type = document.getElementById('lead-type').value;
+            const stage = document.getElementById('lead-stage').value;
+            const action = document.getElementById('lead-action').value.trim();
+            const date = document.getElementById('lead-date').value;
+            const notes = document.getElementById('lead-notes').value.trim();
+
+            const newLead = {
+                id: 'lead-' + Date.now(),
+                name,
+                contact,
+                val,
+                fit,
+                type,
+                stage,
+                action,
+                date,
+                notes
+            };
+
+            leads.unshift(newLead);
+            saveState();
+            renderKanban();
+
+            closeAddLeadModal();
+            document.getElementById('form-new-lead').reset();
+
+            showToast(`Lead registrado: ${name} (+50 XP)`);
+            addXP(50);
+        }
+
+        // ==========================================
+        // TABS NAVIGATION SYSTEM
+        // ==========================================
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-screen').forEach(el => el.classList.add('hidden'));
+            
+            const targetScreen = document.getElementById(tabId);
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden');
+            }
+
+            document.querySelectorAll('.nav-tab').forEach(btn => {
+                btn.className = "nav-tab px-3.5 py-1.5 rounded-xl text-xs font-semibold transition text-slate-500 hover:text-slate-800 hover:bg-slate-100";
+            });
+            const activeDesktopBtn = document.getElementById(`nav-${tabId}`);
+            if (activeDesktopBtn) {
+                activeDesktopBtn.className = "nav-tab px-3.5 py-1.5 rounded-xl text-xs font-bold transition bg-brand-purple text-white shadow-sm";
+            }
+
+            document.querySelectorAll('.mob-tab').forEach(btn => {
+                btn.className = "mob-tab flex flex-col items-center gap-0.5 text-slate-400 font-bold";
+            });
+            const activeMobBtn = document.getElementById(`mob-${tabId}`);
+            if (activeMobBtn) {
+                activeMobBtn.className = "mob-tab flex flex-col items-center gap-0.5 text-brand-purple font-bold";
+            }
+
+            if (tabId === 'screen-panel') {
+                setTimeout(drawScatterChart, 100);
+            }
+        }
+
+        // ==========================================
+        // CLIENT DETAILS & NOTES
+        // ==========================================
+        function selectClient(name) {
+            const lead = leads.find(l => l.name === name);
+            document.getElementById('client-name').innerText = name;
+            
+            if (lead) {
+                document.getElementById('client-address').innerText = `${lead.contact} · Cádiz`;
+            }
+
+            switchTab('screen-cliente');
+            showToast(`Ficha de cliente: ${name}`);
+        }
+
+        function addClientNote() {
+            const input = document.getElementById('new-note-input');
+            const noteText = input.value.trim();
+            if (noteText) {
+                const notesContainer = document.getElementById('notes-list');
+                const noteDiv = document.createElement('div');
+                noteDiv.className = 'bg-slate-50 border border-slate-200/60 p-3 rounded-xl text-xs space-y-1';
+                noteDiv.innerHTML = `
+                    <div class="flex justify-between font-bold text-slate-700">
+                        <span>Nota añadida</span>
+                        <span class="text-slate-400 font-normal">Ahora</span>
+                    </div>
+                    <p class="text-slate-600 font-medium">${noteText}</p>
+                `;
+                notesContainer.prepend(noteDiv);
+                input.value = '';
+                showToast('Nota registrada');
+            }
+        }
+
+        // ==========================================
+        // DASHBOARD METRICS & CANVAS SCATTER
+        // ==========================================
+        function updateDashboardMetrics(sums, counts) {
+            const totalGanado = sums.ganado || 0;
+            const totalPipeline = (sums.nuevo + sums.contactado + sums.reunion + sums.propuesta) || 0;
+            const activeLeadsCount = (counts.nuevo + counts.contactado + counts.reunion + counts.propuesta) || 0;
+
+            const totalFitSum = leads.reduce((acc, l) => acc + (Number(l.fit) || 0), 0);
+            const avgFit = leads.length ? Math.round(totalFitSum / leads.length) : 0;
+
+            const totalGanadoEl = document.getElementById('dash-total-ganado');
+            const totalPipelineEl = document.getElementById('dash-total-pipeline');
+            const pipelineCountEl = document.getElementById('dash-pipeline-count');
+            const avgFitEl = document.getElementById('dash-avg-fit');
+
+            if (totalGanadoEl) totalGanadoEl.innerText = `${totalGanado.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €`;
+            if (totalPipelineEl) totalPipelineEl.innerText = `${totalPipeline.toLocaleString('es-ES', { minimumFractionDigits: 2 })} €`;
+            if (pipelineCountEl) pipelineCountEl.innerText = `${activeLeadsCount} leads activos`;
+            if (avgFitEl) avgFitEl.innerText = `${avgFit}%`;
+
+            const goalTarget = 5000;
+            const pct = Math.min(Math.round((totalGanado / goalTarget) * 100), 100);
+            const progressBar = document.getElementById('target-progress-bar');
+            const progressBadge = document.getElementById('target-badge');
+            const progressSubtext = document.getElementById('target-subtext');
+
+            if (progressBar) progressBar.style.width = `${pct}%`;
+            if (progressBadge) progressBadge.innerText = `${pct}% Completado (${totalGanado.toLocaleString('es-ES')} €)`;
+            if (progressSubtext) {
+                const remaining = Math.max(goalTarget - totalGanado, 0);
+                progressSubtext.innerText = remaining > 0 
+                    ? `Faltan ${remaining.toLocaleString('es-ES')} € para cumplir el objetivo del mes.`
+                    : `Objetivo mensual alcanzado.`;
+            }
+
+            renderFunnel(counts, sums);
+
+            const weeklyBar = document.getElementById('challenge-weekly-bar');
+            const weeklyText = document.getElementById('challenge-weekly-text');
+            if (weeklyBar && weeklyText) {
+                const countGanado = counts.ganado || 0;
+                const targetGanado = 5;
+                const wPct = Math.min(Math.round((countGanado / targetGanado) * 100), 100);
+                weeklyBar.style.width = `${wPct}%`;
+                weeklyText.innerText = `${countGanado} / ${targetGanado}`;
+            }
+        }
+
+        function renderFunnel(counts, sums) {
+            const container = document.getElementById('funnel-container');
+            if (!container) return;
+
+            const totalCount = leads.length || 1;
+            const funnelStages = [
+                { id: 'nuevo', label: '1. Nuevos Leads', bg: 'bg-pastel-purple text-brand-purpleDark' },
+                { id: 'contactado', label: '2. Contactados', bg: 'bg-pastel-blue text-blue-900' },
+                { id: 'reunion', label: '3. Reunión / Cita', bg: 'bg-pastel-pink text-amber-900' },
+                { id: 'propuesta', label: '4. Propuestas', bg: 'bg-purple-100 text-purple-900' },
+                { id: 'ganado', label: '5. Ganados / Cobrados', bg: 'bg-pastel-mint text-brand-mintDark' }
+            ];
+
+            container.innerHTML = funnelStages.map(st => {
+                const c = counts[st.id] || 0;
+                const val = sums[st.id] || 0;
+                const widthPct = Math.max(Math.round((c / totalCount) * 100), 12);
+
+                return `
+                    <div class="space-y-1">
+                        <div class="flex justify-between text-xs font-semibold text-slate-700">
+                            <span>${st.label} (${c})</span>
+                            <span class="font-bold">${val.toLocaleString('es-ES')} €</span>
+                        </div>
+                        <div class="w-full h-6 bg-slate-100 rounded-lg overflow-hidden border border-slate-200/60 p-0.5">
+                            <div class="h-full ${st.bg} rounded flex items-center px-2.5 font-bold text-[11px] transition-all duration-500" style="width: ${widthPct}%">
+                                ${widthPct}%
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function drawScatterChart() {
+            const canvas = document.getElementById('scatterCanvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            const rect = canvas.getBoundingClientRect();
+            
+            canvas.width = rect.width * window.devicePixelRatio;
+            canvas.height = rect.height * window.devicePixelRatio;
+            ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+
+            const w = rect.width;
+            const h = rect.height;
+
+            ctx.clearRect(0, 0, w, h);
+
+            ctx.strokeStyle = '#E2E8F0';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(35, 15);
+            ctx.lineTo(35, h - 25);
+            ctx.lineTo(w - 15, h - 25);
+            ctx.stroke();
+
+            ctx.fillStyle = '#94A3B8';
+            ctx.font = '600 9px -apple-system, sans-serif';
+            ctx.fillText('Encaje % →', w - 55, h - 10);
+            ctx.fillText('Valor € ↑', 5, 12);
+
+            const maxVal = Math.max(...leads.map(l => Number(l.val) || 0), 500);
+
+            leads.forEach(l => {
+                const fitVal = Number(l.fit) || 50;
+                const euroVal = Number(l.val) || 0;
+
+                const x = 35 + ((fitVal / 100) * (w - 60));
+                const y = (h - 25) - ((euroVal / maxVal) * (h - 55));
+
+                ctx.beginPath();
+                ctx.arc(x, y, 6, 0, Math.PI * 2);
+                ctx.fillStyle = l.stage === 'ganado' ? '#00B894' : '#8C7AE6';
+                ctx.globalAlpha = 0.85;
+                ctx.fill();
+
+                ctx.fillStyle = '#334155';
+                ctx.font = '600 9.5px -apple-system, sans-serif';
+                ctx.fillText(l.name.substring(0, 12), x + 8, y + 3);
+            });
+        }
+
+        // ==========================================
+        // GAMIFICATION & XP SYSTEM
+        // ==========================================
+        function addXP(amount) {
+            currentXP += amount;
+            saveState();
+            updateXPUI();
+        }
+
+        function updateXPUI() {
+            const headerXP = document.getElementById('header-xp');
+            const totalXPDisplay = document.getElementById('total-xp-display');
+            const xpBar = document.getElementById('xp-progress-bar');
+            const xpLabel = document.getElementById('xp-percentage-label');
+
+            const pct = Math.min(Math.round((currentXP / 2000) * 100), 100);
+
+            if (headerXP) headerXP.innerText = `${currentXP.toLocaleString()} / 2.000 XP`;
+            if (totalXPDisplay) totalXPDisplay.innerText = `${currentXP.toLocaleString()} XP`;
+            if (xpBar) xpBar.style.width = `${pct}%`;
+            if (xpLabel) xpLabel.innerText = `${pct.toString().replace('.', ',')}%`;
+        }
+
+        function unlockChest() {
+            showToast('Recompensa obtenida: +300 XP añadidos.');
+            addXP(300);
+            const chestBtn = document.getElementById('chest-btn');
+            if (chestBtn) {
+                chestBtn.innerText = 'Reclamado';
+                chestBtn.disabled = true;
+                chestBtn.className = 'px-3 py-1.5 rounded-xl bg-slate-100 text-slate-400 font-bold text-xs cursor-default';
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('opacity-0', '-translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', '-translate-y-2');
+            }, 2400);
+        }
+
+        window.addEventListener('resize', () => {
+            if (!document.getElementById('screen-panel').classList.contains('hidden')) {
+                drawScatterChart();
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadState();
+            renderKanban();
+        });
+    </script>
+</body>
+</html>
